@@ -1,0 +1,12 @@
+[project]
+name = "democratizing-ai-compute"
+version = "0.1.0"
+description = "Experiments from Democratizing AI Compute: https://www.modular.com/democratizing-ai-compute"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "max[all]>=26.6.0.dev2026081605",
+]
+
+[[tool.uv.index]]
+url = "https://whl.modular.com/nightly/simple/"
