@@ -5,7 +5,10 @@ description = "Experiments from Democratizing AI Compute: https://www.modular.co
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "cupy-cuda13x>=14.1.1",
+    "jupyter>=1.1.1",
     "max[all]>=26.6.0.dev2026081605",
+    "nvmath-python[cu13,numba]>=1.0.0",
 ]
 
 [[tool.uv.index]]

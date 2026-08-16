@@ -4,7 +4,7 @@
 
 The repository contains a few experiments based on the materials from https://www.modular.com/democratizing-ai-compute.
 
-## Experiments
+## Experiment: Inference with MAX
 
 ### [MAX](https://docs.modular.com/get-started/) Quickstart
 
@@ -77,3 +77,10 @@ max benchmark \
   --max-concurrency 32 \
   --result-filename "quickstart-qwen3-8b-benchmark.json"
 ```
+
+## Experiment: General Matrix Multiply with `nvmath-python`
+
+CUDA platform is vast. Beyond language/compiler/profiler it includes libraries, runtime, and utilities.
+As a practical example, lets look at [nvmath](https://developer.nvidia.com/cuda/cuda-x-libraries) from CUDA X Libraries.
+
+Notebook: nvmath-example.ipynb
