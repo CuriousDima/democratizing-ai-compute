@@ -8,3 +8,8 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Jupyter-generated files and local state
+.ipynb_checkpoints/
+.jupyter/
+.jupyter_cache/
