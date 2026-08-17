@@ -8,7 +8,7 @@ The repository contains a few experiments based on the materials from https://ww
 
 ### [MAX](https://docs.modular.com/get-started/) Quickstart
 
-Serving an LLM via `max`:
+To serve an LLM with `max`:
 
 ```bash
 max serve \
@@ -21,7 +21,7 @@ max serve \
 
 `KV cache workspace = (free GPU memory × device_memory_utilization) - model weights`
 
-for example for 32GB GPU memory and Qwen/Qwen3-8B:
+For example, with 32 GB of GPU memory and Qwen/Qwen3-8B:
 
 ```
 Nominal VRAM                  32.00 GB
@@ -34,9 +34,9 @@ Qwen3-8B BF16 weights       -16.38 GB
 Remaining                    12.42 GB
 ```
 
-That 12.42 GB is not all guaranteed KV cache: MAX also needs some runtime/workspace memory.
+That 12.42 GB is not guaranteed to be entirely available for the KV cache: MAX also needs some runtime and workspace memory.
 
-How much does Qwen3-8B's KV cache need? The model is:
+How much memory does Qwen3-8B's KV cache require per token? The model has:
 
 ```
 36 layers
@@ -45,7 +45,8 @@ How much does Qwen3-8B's KV cache need? The model is:
 BF16 = 2 bytes
 ```
 
-Therefore KV cache per token is:
+Therefore, the KV cache size per token is:
+
 ```
 K + V
 = 2 × 36 layers × 8 KV heads × 128 dims × 2 bytes
@@ -53,7 +54,7 @@ K + V
 = 144 KiB/token
 ```
 
-As a result, we are getting:
+This yields:
 
 | Total cached tokens | BF16 KV cache |
 | ------------------: | ------------: |
@@ -62,7 +63,7 @@ As a result, we are getting:
 |              32,768 |  **4.50 GiB** |
 |              40,960 | **5.625 GiB** |
 
-The benchmark start command:
+To run the benchmark:
 
 ```bash
 max benchmark \
@@ -78,9 +79,9 @@ max benchmark \
   --result-filename "quickstart-qwen3-8b-benchmark.json"
 ```
 
-## Experiment: General Matrix Multiply with `nvmath-python`
+## Experiment: General Matrix Multiplication with `nvmath-python`
 
-CUDA platform is vast. Beyond language/compiler/profiler it includes libraries, runtime, and utilities.
-As a practical example, lets look at [nvmath](https://developer.nvidia.com/cuda/cuda-x-libraries) from CUDA X Libraries.
+The CUDA platform is vast. In addition to languages, compilers, and profiling tools, it includes libraries, runtimes, and utilities.
+As a practical example, let's look at [nvmath](https://developer.nvidia.com/cuda/cuda-x-libraries) from the CUDA-X Libraries.
 
-Notebook: nvmath-example.ipynb
+Notebook: [nvmath-example.ipynb](nvmath-example.ipynb)
